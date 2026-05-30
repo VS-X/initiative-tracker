@@ -37,6 +37,29 @@
         }
     }
 
+    const tryUpdateCreatureModifier = () => {
+        let parsed_modifier: number | number[] | undefined;
+        try {
+            parsed_modifier = JSON.parse(`${modifier}`);
+        } catch (e) {
+            console.warn(
+                "Initiative Tracker: Non-parseable modifier provided to creature."
+            );
+        }
+        if (
+            (Array.isArray(parsed_modifier) &&
+                !parsed_modifier.every((m) => !isNaN(Number(m)))) ||
+            isNaN(Number(parsed_modifier))
+        ) {
+            console.warn(
+                "Initiative Tracker: Non-numeric modifier provided to creature."
+            );
+            modifier = JSON.stringify(creature.modifier);
+        } else {
+            creature.modifier = parsed_modifier;
+        }
+    }
+
     const saveButton = (node: HTMLElement) => {
         new ExtraButtonComponent(node)
             .setTooltip("Add Creature")
@@ -47,25 +70,7 @@
                     return;
                 }
 
-                let parsed_modifier: number | number[] | undefined;
-                try {
-                    parsed_modifier = JSON.parse(`${modifier}`);
-                } catch (e) {
-                    console.warn(
-                        "Initiative Tracker: Non-parseable modifier provided to creature."
-                    );
-                }
-                if (
-                    (Array.isArray(parsed_modifier) &&
-                        !parsed_modifier.every((m) => !isNaN(Number(m)))) ||
-                    isNaN(Number(parsed_modifier))
-                ) {
-                    console.warn(
-                        "Initiative Tracker: Non-numeric modifier provided to creature."
-                    );
-                } else {
-                    creature.modifier = parsed_modifier;
-                }
+                tryUpdateCreatureModifier();
 
                 if (
                     creature.initiative <= 0 ||
@@ -101,25 +106,7 @@
                     return;
                 }
 
-                let parsed_modifier: number | number[] | undefined;
-                try {
-                    parsed_modifier = JSON.parse(`${modifier}`);
-                } catch (e) {
-                    console.warn(
-                        "Initiative Tracker: Non-parseable modifier provided to creature."
-                    );
-                }
-                if (
-                    (Array.isArray(parsed_modifier) &&
-                        !parsed_modifier.every((m) => !isNaN(Number(m)))) ||
-                    isNaN(Number(parsed_modifier))
-                ) {
-                    console.warn(
-                        "Initiative Tracker: Non-numeric modifier provided to creature."
-                    );
-                } else {
-                    creature.modifier = parsed_modifier;
-                }
+                tryUpdateCreatureModifier();
 
                 if (
                     creature.initiative <= 0 ||
@@ -164,6 +151,7 @@
             .setIcon(DICE)
             .setTooltip("Roll Initiative")
             .onClick(async () => {
+                tryUpdateCreatureModifier();
                 creature.initiative = await plugin.getInitiativeValue(
                     creature.modifier
                 );
