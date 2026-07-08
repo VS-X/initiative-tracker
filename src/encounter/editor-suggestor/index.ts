@@ -196,7 +196,7 @@ export class EncounterSuggester extends EditorSuggest<string> {
                 query
             };
         }
-        if (/\s+- (?:\d:)?/.test(line)) {
+        if (/\s+- (?:\d+:\s*)?/.test(line)) {
             //in creature or player context... try to figure out which
             let found = false;
             for (let i = split.length - 1; i >= 0; i--) {
@@ -217,7 +217,7 @@ export class EncounterSuggester extends EditorSuggest<string> {
             //panic
             if (!found) return null;
 
-            const [_, query] = line.match(/^\s+- (?:\d:)?(.*)$/);
+            const [_, query] = line.match(/^\s+- (?:\d+:\s*)?(.*)$/);
             return {
                 end: cursor,
                 start: {
