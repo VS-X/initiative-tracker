@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.1.0](https://github.com/VS-X/initiative-tracker/compare/13.0.21...13.1.0) (2026-07-08)
+
+
+### Features
+
+* allow typing numbers before monster autocomplete ([a1846a2](https://github.com/VS-X/initiative-tracker/commit/a1846a2bb4450e55a0f73ffc8211de42bbc36731))
+
 ## [13.0.21](https://github.com/Obsidian-TTRPG-Community/initiative-tracker/compare/13.0.20...13.0.21) (2026-04-12)
 
 
