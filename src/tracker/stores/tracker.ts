@@ -770,8 +770,15 @@ function createTracker() {
                 if (!state?.creatures) {
                     /**
                      * New encounter button was clicked, only maintain the players.
+                     * Refresh each player's static stats (name/ac/max hp/modifier/etc)
+                     * from settings in case they were edited, without touching
+                     * their current hp/temp/status.
                      */
                     creatures = creatures.filter((c) => c.player);
+                    for (const c of creatures) {
+                        const fresh = plugin.getPlayerByName(c.name);
+                        if (fresh) c.update(fresh.creature);
+                    }
                 } else {
                     /**
                      * Encounter is being started. Keep any pre-existing players that are incoming.
@@ -795,6 +802,15 @@ function createTracker() {
                             )) &&
                             existingPlayer != null
                         ) {
+                            /**
+                             * Refresh the player's static stats from settings
+                             * in case they were edited, without resetting
+                             * current hp/temp/status.
+                             */
+                            const fresh = plugin.getPlayerByName(
+                                existingPlayer.name
+                            );
+                            if (fresh) existingPlayer.update(fresh.creature);
                             tempCreatureArray.push(existingPlayer);
                         } else {
                             tempCreatureArray.push(
