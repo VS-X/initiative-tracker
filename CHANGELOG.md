@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.2.0](https://github.com/VS-X/initiative-tracker/compare/13.1.0...13.2.0) (2026-07-10)
+
+
+### Features
+
+* dnd 2024 rules ([a33ccfc](https://github.com/VS-X/initiative-tracker/commit/a33ccfc5fa31d041d10317173bb6b6e4404b36f3))
+* reset HP option ([95b0edd](https://github.com/VS-X/initiative-tracker/commit/95b0edd6a1a5abf10364f0f73b0c49267a07ac16))
+
+
+### Bug Fixes
+
+* keep creature modifier when adding from modal ([1bea123](https://github.com/VS-X/initiative-tracker/commit/1bea12367db63dc029399846b40af7cf45005b82))
+
 ## [13.1.0](https://github.com/VS-X/initiative-tracker/compare/13.0.21...13.1.0) (2026-07-08)
 
 
