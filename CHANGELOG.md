@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.3.0](https://github.com/VS-X/initiative-tracker/compare/13.2.0...13.3.0) (2026-07-10)
+
+
+### Features
+
+* reload player data (keeping hp and status) when starting a new encounter ([65838d2](https://github.com/VS-X/initiative-tracker/commit/65838d2facf9292f41830218e4f2f2facfaa8819))
+
 ## [13.2.0](https://github.com/VS-X/initiative-tracker/compare/13.1.0...13.2.0) (2026-07-10)
 
 
